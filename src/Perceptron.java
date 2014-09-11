@@ -1,19 +1,17 @@
 public class Perceptron {
 
-	private double[] inputs;
+	private ArrayList<double> inputs;
 	private double[] weights;
 	private double treshold;
-	private int epochs;
 	private double alpha;
 	
-	public Perceptron(double[] argInputs, double argTreshold, int argEpochs, double argAlpha){
+	public Perceptron(double[] argInputs, double[] argWeights, double argTreshold, double argAlpha){
 		inputs = argInputs;
-		weights = new double[argInputs.length];
+		weights = new double[inputs.length];
 		treshold = argTreshold;
-		epochs = argEpochs;
 		alpha = argAlpha;
-		
-		for(int i = 0; i < inputs.length; i++){
+		double[] weights = new double[10];
+		for(int i = 0; i < 10; i++){
 			weights[i] = Math.random() * 2 - 1;
 		}
 		
@@ -29,4 +27,14 @@ public class Perceptron {
 		return res - treshold;
 	}
 	
+	
+	public void updateWeights(double error){
+		for(int i = 0; i < weights.length; i++){
+			weights[i] = weights[i] + (alpha * inputs[i] * error);
+		}
+	}
+	
+	public double[] getWeights(){
+		return weights;
+	}
 }

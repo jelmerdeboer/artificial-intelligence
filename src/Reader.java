@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class Reader {
-	private List<Double[]> lines = new ArrayList<Double[]>();
+	private List<double[]> lines = new ArrayList<double[]>();
 	private int linecounter;
 
 	public	 Reader(String file){
@@ -24,7 +24,7 @@ public class Reader {
 			String line;
 			while ((line = br.readLine()) != null) {
 				String[] values = line.split(",");
-				Double[] numberValues = new Double[values.length];
+				double[] numberValues = new double[values.length];
 				for(int i = 0; i < values.length; i++){
 					numberValues[i] = Double.parseDouble(values[i]);
 				}
@@ -38,8 +38,8 @@ public class Reader {
 		System.out.println("Read " + lines.size() + " lines");
 	}
 	
-	public Double[] getNextInputs(){
-		Double[] res = lines.get(linecounter);
+	public double[] getNextInputs(){
+		double[] res = lines.get(linecounter);
 		linecounter++;
 		return res;
 	}
